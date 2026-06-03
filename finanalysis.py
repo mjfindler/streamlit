@@ -12,7 +12,7 @@ def fetch_data(tickers, start_date, end_date):
     data.columns = tickers
     return data
 
-ef calculate_sharpe_ratio(returns, risk_free_rate=0.02):
+def calculate_sharpe_ratio(returns, risk_free_rate=0.02):
     portfolio_return = returns.mean().mean()
     portfolio_volatility = returns.std().mean()
     return (portfolio_return - risk_free_rate) / portfolio_volatility
