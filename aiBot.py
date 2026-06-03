@@ -14,12 +14,12 @@ def response_generator():
         time.sleep(0.05)
 
 def ai_ask(prompt, data=None, temperature=0.5, max_tokens=250, model="mistral-small-latest", api_key=None, api_url="https://api.mistral.ai/v1/chat/completions"):
-if api_key is None or api_url is None:
-    if "idToken" in globals():
-        api_key = globals()["idToken"]
-        api_url = "https://llm.boardflare.com"
-    else:
-        return "Login on the Functions tab for limited demo usage, or sign up for a free Mistral AI account at https://console.mistral.ai/ and add your own api_key."
+    if api_key is None or api_url is None:
+        if "idToken" in globals():
+            api_key = globals()["idToken"]
+            api_url = "https://llm.boardflare.com"
+        else:
+            return "Login on the Functions tab for limited demo usage, or sign up for a free Mistral AI account at https://console.mistral.ai/ and add your own api_key."
 
     if not isinstance(temperature, (float, int)) or not (0 <= float(temperature) <= 2):
         return "Error: temperature must be a float between 0 and 2 (inclusive)"
