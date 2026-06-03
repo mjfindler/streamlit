@@ -1,5 +1,6 @@
 import yfinance as yf
 import pandas as pd
+import numpy as np
 import streamlit as st   # add at top with other imports, the rest at the bottom
 
 def fetch_data(tickers, start_date, end_date):
@@ -22,6 +23,9 @@ def calculate_sortino_ratio(returns, risk_free_rate=0.02):
     downside_returns = returns[returns < 0]
     downside_deviation = downside_returns.std().mean()
     return (portfolio_return - risk_free_rate) / downside_deviation
+
+def portfolio_optimization(returns):
+    return np.ones(len(returns.columns)) / len(returns.columns)
 
 st.title("Financial Analysis Web App")
 
