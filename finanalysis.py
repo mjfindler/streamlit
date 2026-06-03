@@ -16,13 +16,13 @@ def fetch_data(tickers, start_date, end_date):
 def calculate_sharpe_ratio(returns, risk_free_rate=0.02):
     portfolio_return = returns.mean().mean()
     portfolio_volatility = returns.std().mean()
-    return (portfolio_return - risk_free_rate) / portfolio_volatility
+    return (portfolio_return*252 - risk_free_rate) / portfolio_volatility
 
 def calculate_sortino_ratio(returns, risk_free_rate=0.02):
     portfolio_return = returns.mean().mean()
     downside_returns = returns[returns < 0]
     downside_deviation = downside_returns.std().mean()
-    return (portfolio_return - risk_free_rate) / downside_deviation
+    return (portfolio_return*252 - risk_free_rate) / downside_deviation
 
 def portfolio_optimization(returns):
     return np.ones(len(returns.columns)) / len(returns.columns)
