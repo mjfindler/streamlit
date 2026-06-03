@@ -32,8 +32,8 @@ st.title("Financial Analysis Web App")
 # User inputs
 tickers = st.text_input("Enter stock tickers (comma separated)", "AAPL, MSFT, GOOG").split(",")
 tickers = [ticker.strip() for ticker in tickers]
-start_date = st.date_input("Start Date", pd.to_datetime("2020-01-01"))
-end_date = st.date_input("End Date", pd.to_datetime("2023-01-01"))
+start_date = st.date_input("Start Date", pd.to_datetime("2023-01-01"))
+end_date = st.date_input("End Date", pd.to_datetime("2026-01-01"))
 
 # Fetch stock data
 stock_data = fetch_data(tickers, start_date, end_date)
@@ -60,3 +60,6 @@ st.subheader("Portfolio Optimization")
 st.write("Optimal Portfolio Weights:")
 for ticker, weight in zip(tickers, optimal_weights):
     st.write(f"{ticker}: {weight:.2%}")
+
+csv_data = stock_data.to_csv()
+st.download_button("Download Stock Data CSV", csv_data, "stock_data.csv")
