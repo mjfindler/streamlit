@@ -37,6 +37,7 @@ if st.checkbox('Show bar chart'):
 
     st.bar_chart(hist_values)
 
+hour_to_filter = None
 if st.checkbox('Show map'):
     if hour_to_filter is None:
          hour_to_filter = st.slider('hour', 0, 23, 17)
